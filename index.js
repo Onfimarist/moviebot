@@ -1,21 +1,21 @@
 const { Client, Collection } = require("discord.js");
 const fs = require("fs");
 
-require("dotenv").config({ allowEmptyVariables: true});
+require("dotenv").config({ allowEmptyValues: true});
 
 const client = new Client({
     disableMentions: "everyone"
-})
+});
 
-client.prefix = "!"
+client.prefix = "!";
 
-client.footer = process.env.FOOTER
-client.color = process.env.EMBEDCOLOR
+client.footer = process.env.FOOTER;
+client.color = process.env.EMBEDCOLOR;
 
 client.commands = new Collection();
-client.args = new Collection();
+client.aliases = new Collection();
 
-client.categories = fs.readdirSync("./commands");
+client.categories = fs.readdirSync("./commands/");
 
 ["commands"].forEach(handler => {
     require(`./handler/${handler}`)(client);
@@ -24,7 +24,7 @@ client.categories = fs.readdirSync("./commands");
 client.on("ready", () => {
     console.log(`Logged in using ${client.user.username}`);
 
-    client.user.setActivity(".help");
+    client.user.setActivity("!help")
 });
 
 client.on("message", async message => {
@@ -33,7 +33,7 @@ client.on("message", async message => {
     if (!message.content.startsWith(client.prefix)) return;
     if (!message.member) message.member = await message.guild.members.fetch(message);
 
-    const args = message.content.slice(client.prefix.length).trim().split(/ + /g);
+    const args = message.content.slice(client.prefix.length).trim().split(/ +/g);
     const cmd = args.shift().toLowerCase();
 
     if (cmd.length === 0) return;
@@ -42,7 +42,7 @@ client.on("message", async message => {
     if (!command) command = client.commands.get(client.aliases.get(cmd));
 
     if (command)
-    command.run(client, message, args);
-})
+        command.run(client, message, args);
+});
 
 client.login(process.env.DEVTOKEN);
