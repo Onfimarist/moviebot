@@ -1,7 +1,11 @@
+const { MessageFlags } = require("discord.js")
+
 module.exports = {
     name: "settings",
     run: async (client, message, args) => {
-           if (args[0] === null)
-           message.channel.send("something")
+        message.channel.send(args)
+        message.channel.send(args.slice(0))
+        message.channel.send(args.join(" "))
+        message.channel.send(args.slice(0).join(" "))
     }
 }
