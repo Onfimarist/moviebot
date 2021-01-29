@@ -17,7 +17,7 @@ client.args = new Collection();
 
 client.categories = fs.readdirSync("./commands");
 
-["commands"].foreach(handler => {
+["commands"].forEach(handler => {
     require(`./handler/${handler}`)(client);
 });
 
