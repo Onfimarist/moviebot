@@ -8,6 +8,6 @@ module.exports = {
 
         client.moviechannel = movieChannel
 
-        movieChannel.toString()
+        movieChannel.send("I Am Now the Movie Channel")
     }
 }
