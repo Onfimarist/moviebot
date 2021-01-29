@@ -1,9 +1,8 @@
 const { MessageFlags } = require("discord.js")
 
 module.exports = {
-    name: "settings",
+    name: "setprefix",
     run: async (client, message, args) => {
-        message.channel.send(args(0))
-        message.channel.send(args.slice(0))
+        client.prefix = "args"
     }
 }
