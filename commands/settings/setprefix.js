@@ -7,6 +7,6 @@ module.exports = {
 
         client.prefix = args
 
-        message.channel.send("Changed prefix to: " + client.prefix)
+        message.channel.send("Changed prefix to: `" + client.prefix + "`")
     }
 }
