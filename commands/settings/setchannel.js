@@ -7,5 +7,7 @@ module.exports = {
         let movieChannel = message.guild.channels.cache.find(c => c.name === args)
 
         client.moviechannel = movieChannel
+
+        movieChannel.toString()
     }
 }
