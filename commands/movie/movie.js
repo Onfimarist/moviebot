@@ -5,6 +5,6 @@ module.exports = {
     run: async (client, message) => {
         if (message.deletable) message.delete()
 
-        message.channel.send("something")
+        message.channel.send(args.slice(0).join(" "))
     }
 }
