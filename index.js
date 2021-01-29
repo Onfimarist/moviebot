@@ -9,6 +9,8 @@ const client = new Client({
 
 client.prefix = "!";
 
+client.moviechannel;
+
 client.footer = process.env.FOOTER;
 client.color = process.env.EMBEDCOLOR;
 
